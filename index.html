@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Composable Squares</title>
+    </head>
+
+    <body>
+        <script src="node_modules/react/umd/react.development.js"></script>
+        <script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+
+        <div id="root"></div>
+        <script>
+            const Title = (props) => {
+		        const { text, text_color, bgColor } = props;
+		        return React.createElement('h1', {
+                    style: {
+                        width: '250px', 
+                        height: '250px',
+                        color: text_color, 
+                        backgroundColor: bgColor, 
+                        display: "inline-block"
+                    }
+			    },
+			        text
+                );
+            }
+
+            const App = (props) =>{
+                return React.createElement('div', { style: { width: '100vw', height: '100vh' } },
+                    React.createElement(Title, { text: 'white on blue', text_color: 'white', bgColor: 'blue' }),
+                    React.createElement(Title, { text: 'blue on red', text_color: 'blue', bgColor: 'red' }),
+                    React.createElement(Title, { text: 'green on pink', text_color: 'green', bgColor: 'pink' })
+                )
+            }
+            
+            ReactDOM.render(App(), document.getElementById('root'));
+
+        </script>
+    </body>
+
+</html>
